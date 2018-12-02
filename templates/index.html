@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<div id="content"></div>
+<div id="content" class="aui-padded-b-15"></div>
 
 <footer class="aui-bar aui-bar-tab" id="footer">
     <div class="aui-bar-tab-item aui-active" tapmode>
@@ -35,30 +35,53 @@
 </footer>
 
 <script type="text/javascript" src="{% static "aui/script/aui-tab.js" %}"></script>
+<script type="text/javascript" src="{% static "aui/script/aui-toast.js" %}"></script>
 <script type="text/javascript" src="{% static "jquery/jquery-3.3.1.js" %}"></script>
 <script type="text/javascript">
-    $("#content").load('/top_mv');
-    var tab = new auiTab({
+    let toast = new auiToast({});
+
+    $(document).ready(function () {
+        toast.loading({
+            title: "加载中",
+            duration: 2000
+        }, function (ret) {
+            console.log(ret);
+            setTimeout(function () {
+                $("#content").load('/top_mv');
+                toast.hide();
+            }, 200)
+        });
+    });
+
+    let tab = new auiTab({
         element: document.getElementById("footer"),
         index: 1,
         repeatClick: false
     }, function (ret) {
         switch (ret.index) {
             case 1:
-                $("#content").load('/top_mv');
-                $.ajax({
-                    type: "GET",
-                    url: "/login",
-                    data: {},
-                    dataType: "html",
-                    success: function (data) {
-                        console.log(data);
-                    }
+                toast.loading({
+                    title: "加载中",
+                    duration: 2000
+                }, function (ret) {
+                    console.log(ret);
+                    setTimeout(function () {
+                        $("#content").load('/top_mv');
+                        toast.hide();
+                    }, 200)
                 });
-
                 break;
             case 4:
-                $("#content").load('/login');
+                toast.loading({
+                    title: "加载中",
+                    duration: 2000
+                }, function (ret) {
+                    console.log(ret);
+                    setTimeout(function () {
+                        $("#content").load('/login');
+                        toast.hide();
+                    }, 200)
+                });
                 break;
             default:
                 console.log(ret);

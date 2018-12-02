@@ -24,9 +24,19 @@ def top_mv(request):
     if not limit:
         return JsonResponse({'code': -1, 'msg': 'params error', 'data': []})
 
-    ret = NetEaseCloudMusicApi.send_request('top/mv', method='GET', data={'limit': 10})
+    ret = NetEaseCloudMusicApi.send_request('top/mv', method='GET', data={'limit': limit})
     context = {'top_mv_list': ret['data']}
     return render(request, 'top_mv.html', context)
+
+
+def mv_detail(request):
+    mv_id = request.GET.get('id')
+    if not mv_id:
+        return JsonResponse({'code': -1, 'msg': 'params error', 'data': []})
+
+    ret = NetEaseCloudMusicApi.send_request('mv/detail', method='GET', data={'mvid': mv_id})
+    context = {'mv_detail': ret['data']}
+    return render(request, 'mv_detail.html', context)
 
 
 def login_post(request):

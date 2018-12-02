@@ -18,11 +18,11 @@
     <div class="aui-title">mv排行</div>
 </header>
 
-<div class="aui-content aui-margin-b-15">
+<div class="aui-content">
     <ul class="aui-list aui-media-list">
         {% for top_mv in top_mv_list %}
             <li class="aui-list-item aui-list-item-middle">
-                <div class="aui-media-list-item-inner">
+                <div class="aui-media-list-item-inner" onclick="window.open('/mv_detail?id={{ top_mv.id }}','_self')">
                     <div class="aui-list-item-media" style="width: 3rem;">
                         <img src="{{ top_mv.cover }}" alt="{{ top_mv.name }}">
                     </div>
@@ -30,7 +30,7 @@
                         <div class="aui-list-item-text">
                             <div class="aui-list-item-title aui-font-size-14">{{ top_mv.name }}</div>
                             <div class="aui-list-item-right">
-                                <div class="aui-label aui-label-info">{{ top_mv.score }}</div>
+                                <div class="aui-label aui-label-info">{{ top_mv.playCount }}</div>
                             </div>
                         </div>
                         <div class="aui-list-item-text">

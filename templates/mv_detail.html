@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>{{ mv_detail.name }}</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static "aui/css/aui.css" %}"/>
+</head>
+<body>
+
+<header class="aui-bar aui-bar-nav">
+    <a href="/index" class="aui-pull-left aui-btn">
+        <span class="aui-iconfont aui-icon-left"></span>
+    </a>
+    <div class="aui-title">{{ mv_detail.name }}</div>
+</header>
+
+<div class="aui-content aui-margin-b-15">
+    <div class="aui-row">
+        <video controls width="100%" height="100%" autoplay>
+            <source src="{{ mv_detail.brs.720 }}" type="video/mp4"/>
+        </video>
+    </div>
+</div>
+
+</body>
+</html>

@@ -17,18 +17,19 @@ class NetEaseCloudMusicApi:
         _url = NET_EASE_CLOUD_MUSIC_API_SERVER_URL + url
         try:
             if method == 'GET':
-                response = requests.post(_url, data=json.dumps(data), timeout=30)
+                response = requests.get(_url, params=data, timeout=30)
             else:
-                response = requests.get(_url, data=json.dumps(data), timeout=30)
-
+                response = requests.post(_url, data=json.dumps(data), timeout=30)
+            print "REQUEST URL: %s\nMETHOD: %s\nREQUEST: %s" % (response.url, method, data)
             if not response or response.status_code != 200:
-                print "REQUEST URL: %s\nREQUEST: %s\nHTTP_CODE: %s" % (_url, data, response.status_code)
+                print "HTTP_CODE: %s" % response.status_code
                 return {}
             result = response.json()
         except Exception as err:
             print "REQUEST http exception, err:%s" % err
             return {}
+
         time_cost = (datetime.datetime.now() - time_start).total_seconds()
-        print "REQUEST URL: %s\nREQUEST: %s\nRESPONSE: %s\nTIME_COST: %s seconds" % (_url, data, result, time_cost)
+        print "RESPONSE: %s\nTIME_COST: %s seconds" % (result, time_cost)
 
         return result
