@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>首页</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static "aui/css/aui.css" %}"/>
+</head>
+<body>
+
+<header class="aui-bar aui-bar-nav">
+    <a class="aui-pull-left aui-btn">
+        <span class="aui-iconfont aui-icon-left"></span>
+    </a>
+    <div class="aui-title">mv排行</div>
+</header>
+
+<div class="aui-content aui-margin-b-15">
+    <ul class="aui-list aui-media-list">
+        {% for top_mv in top_mv_list %}
+            <li class="aui-list-item aui-list-item-middle">
+                <div class="aui-media-list-item-inner">
+                    <div class="aui-list-item-media" style="width: 3rem;">
+                        <img src="{{ top_mv.cover }}" alt="{{ top_mv.name }}">
+                    </div>
+                    <div class="aui-list-item-inner aui-list-item-arrow">
+                        <div class="aui-list-item-text">
+                            <div class="aui-list-item-title aui-font-size-14">{{ top_mv.name }}</div>
+                            <div class="aui-list-item-right">
+                                <div class="aui-label aui-label-info">{{ top_mv.score }}</div>
+                            </div>
+                        </div>
+                        <div class="aui-list-item-text">
+                            {{ top_mv.artistName }}
+                        </div>
+                    </div>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+
+</body>
+</html>

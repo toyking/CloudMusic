@@ -37,6 +37,7 @@
 <script type="text/javascript" src="{% static "aui/script/aui-tab.js" %}"></script>
 <script type="text/javascript" src="{% static "jquery/jquery-3.3.1.js" %}"></script>
 <script type="text/javascript">
+    $("#content").load('/top_mv');
     var tab = new auiTab({
         element: document.getElementById("footer"),
         index: 1,
@@ -44,7 +45,7 @@
     }, function (ret) {
         switch (ret.index) {
             case 1:
-                $("#content").load('/login');
+                $("#content").load('/top_mv');
                 $.ajax({
                     type: "GET",
                     url: "/login",
@@ -55,6 +56,9 @@
                     }
                 });
 
+                break;
+            case 4:
+                $("#content").load('/login');
                 break;
             default:
                 console.log(ret);

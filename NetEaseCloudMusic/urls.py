@@ -6,6 +6,7 @@ from NetEaseCloudMusic import views
 urlpatterns = [
     url(r'^index', views.index),
     url(r'^login', views.login),
+    url(r'^top_mv', views.top_mv)
 ]
 
 urlpatterns += [
