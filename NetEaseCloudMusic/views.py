@@ -20,7 +20,7 @@ def hot_music_list(request):
 
 
 def top_mv(request):
-    limit = request.GET.get('limit', 10)
+    limit = request.GET.get('limit', 20)
     if not limit:
         return JsonResponse({'code': -1, 'msg': 'params error', 'data': []})
 
