@@ -75,6 +75,17 @@
         </div>
     </section>
 
+    <section class="aui-grid">
+        <div class="aui-row">
+            {% for music in music_personalized %}
+                <div class="aui-col-xs-4">
+                    <img src="{{ music.picUrl }}" style="padding: 0.5rem;" alt="">
+                    <div class="aui-grid-label">{{ music.name }}</div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
 </div>
 
 <script type="text/javascript" src="{% static "aui/script/aui-tab.js" %}"></script>

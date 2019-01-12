@@ -14,7 +14,10 @@ def index(request):
 
 
 def home(request):
-    context = {'timestamp': time.time()}
+    ret_music_personalized = NetEaseCloudMusicApi.send_request('personalized', method='GET', data={'limit': 6})
+    context = {
+        'music_personalized': ret_music_personalized.get('result')
+    }
     return render(request, 'home.html', context)
 
 
