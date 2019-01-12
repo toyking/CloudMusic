@@ -12,7 +12,7 @@
 <body>
 
 <header class="aui-bar aui-bar-nav">
-    <a href="/index" class="aui-pull-left aui-btn">
+    <a href="/top_mv" class="aui-pull-left aui-btn">
         <span class="aui-iconfont aui-icon-left"></span>
     </a>
     <div class="aui-title">{{ mv_detail.name }}</div>
@@ -20,10 +20,63 @@
 
 <div class="aui-content aui-margin-b-15">
     <div class="aui-row">
-        <video controls width="100%" height="100%" autoplay>
-            <source src="{{ mv_detail.brs.720 }}" type="video/mp4"/>
+        <video controls autoplay style="display: block; width:100%; height:100%; background: #000;">
+            <source src="{{ mv_detail.brs.items.0.1 }}" type="video/mp4"/>
         </video>
     </div>
+
+
+    <ul class="aui-list aui-media-list">
+        {% for comment in mv_comment %}
+            <li class="aui-list-item">
+                <div class="aui-media-list-item-inner">
+                    <div class="aui-list-item-media">
+                        <img src="{{ comment.user.avatarUrl }}" alt="">
+                    </div>
+                    <div class="aui-list-item-inner">
+                        <div class="aui-list-item-text">
+                            <div class="aui-list-item-title">{{ comment.user.nickname }}</div>
+                            <div class="aui-list-item-right">
+                                <script>
+                                    (function () {
+                                        Date.prototype.Format = function (fmt) { //author: meizz
+                                            let o = {
+                                                "M+": this.getMonth() + 1, //月份
+                                                "d+": this.getDate(), //日
+                                                "h+": this.getHours(), //小时
+                                                "m+": this.getMinutes(), //分
+                                                "s+": this.getSeconds(), //秒
+                                                "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+                                                "S": this.getMilliseconds() //毫秒
+                                            };
+                                            if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+                                            for (let k in o)
+                                                if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+                                            return fmt;
+                                        };
+                                        let time1 = new Date({{ comment.time }}).Format("yyyy-MM-dd hh:mm:ss");
+                                        document.write(time1);
+                                    })();
+                                </script>
+                            </div>
+                        </div>
+                        <div class="aui-list-item-text">
+                            {{ comment.content }}
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-info" style="padding-top:0">
+                    <div class="aui-info-item"></div>
+
+                    <div class="aui-list-item-right">
+                        <div class="aui-label aui-label-info aui-label-outlined">
+                            <i class="aui-iconfont aui-icon-laud"></i>({{ comment.likedCount }})
+                        </div>
+                    </div>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
 </div>
 
 </body>

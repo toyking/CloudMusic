@@ -38,56 +38,58 @@
 <script type="text/javascript" src="{% static "aui/script/aui-toast.js" %}"></script>
 <script type="text/javascript" src="{% static "jquery/jquery-3.3.1.js" %}"></script>
 <script type="text/javascript">
-    let toast = new auiToast({});
+    (function () {
+        let toast = new auiToast({});
 
-    $(document).ready(function () {
-        toast.loading({
-            title: "加载中",
-            duration: 2000
-        }, function (ret) {
-            console.log(ret);
-            setTimeout(function () {
-                $("#content").load('/top_mv');
-                toast.hide();
-            }, 200)
-        });
-    });
-
-    let tab = new auiTab({
-        element: document.getElementById("footer"),
-        index: 1,
-        repeatClick: false
-    }, function (ret) {
-        switch (ret.index) {
-            case 1:
-                toast.loading({
-                    title: "加载中",
-                    duration: 2000
-                }, function (ret) {
-                    console.log(ret);
-                    setTimeout(function () {
-                        $("#content").load('/top_mv');
-                        toast.hide();
-                    }, 200)
-                });
-                break;
-            case 4:
-                toast.loading({
-                    title: "加载中",
-                    duration: 2000
-                }, function (ret) {
-                    console.log(ret);
-                    setTimeout(function () {
-                        $("#content").load('/login');
-                        toast.hide();
-                    }, 200)
-                });
-                break;
-            default:
+        $(document).ready(function () {
+            toast.loading({
+                title: "加载中",
+                duration: 2000
+            }, function (ret) {
                 console.log(ret);
-                break;
-        }
-    });
+                setTimeout(function () {
+                    $("#content").load('/home');
+                    toast.hide();
+                }, 200)
+            });
+        });
+
+        let tab = new auiTab({
+            element: document.getElementById("footer"),
+            index: 1,
+            repeatClick: false
+        }, function (ret) {
+            switch (ret.index) {
+                case 1:
+                    toast.loading({
+                        title: "加载中",
+                        duration: 2000
+                    }, function (ret) {
+                        console.log(ret);
+                        setTimeout(function () {
+                            $("#content").load('/home');
+                            toast.hide();
+                        }, 200)
+                    });
+                    break;
+                case 4:
+                    toast.loading({
+                        title: "加载中",
+                        duration: 2000
+                    }, function (ret) {
+                        console.log(ret);
+                        setTimeout(function () {
+                            $("#content").load('/login');
+                            toast.hide();
+                        }, 200)
+                    });
+                    break;
+                default:
+                    console.log(ret);
+                    break;
+            }
+        });
+    })();
 </script>
 
 </body>

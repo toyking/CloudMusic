@@ -1,10 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>首页</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static "aui/css/aui.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "aui/css/aui-slide.css" %}"/>
 </head>
 <body>
+
+<div class="aui-content">
+    <div class="aui-searchbar" id="search">
+        <div class="aui-searchbar-input aui-border-radius" tapmode onclick="doSearch()">
+            <i class="aui-iconfont aui-icon-search"></i>
+            <form action="javascript:search();">
+                <input type="search" placeholder="请输入搜索内容" id="search-input">
+            </form>
+        </div>
+        <div class="aui-searchbar-cancel" tapmode>取消</div>
+    </div>
+
+    <div id="aui-slide3">
+        <div class="aui-slide-wrap">
+            <div class="aui-slide-node bg-dark">
+                <img src="{% static "aui/image/l1.png" %}" alt=""/>
+            </div>
+            <div class="aui-slide-node bg-dark">
+                <img src="{% static "aui/image/l1.png" %}" alt=""/>
+            </div>
+            <div class="aui-slide-node bg-dark">
+                <img src="{% static "aui/image/l1.png" %}" alt=""/>
+            </div>
+        </div>
+        <div class="aui-slide-page-wrap"><!--分页容器--></div>
+    </div>
+
+    <section class="aui-grid">
+        <div class="aui-row">
+            <div class="aui-col-xs-3">
+                <i class="aui-iconfont aui-icon-home"></i>
+                <div class="aui-grid-label">首页</div>
+            </div>
+            <div class="aui-col-xs-3">
+                <i class="aui-iconfont aui-icon-paper"></i>
+                <div class="aui-grid-label">发现</div>
+            </div>
+            <div class="aui-col-xs-3" onclick="window.open('/top_mv','_self')">
+                <i class="aui-iconfont aui-icon-video"></i>
+                <div class="aui-grid-label">视频</div>
+            </div>
+            <div class="aui-col-xs-3">
+                <i class="aui-iconfont aui-icon-gear"></i>
+                <div class="aui-grid-label">设置</div>
+            </div>
+            <div class="aui-col-xs-3">
+                <i class="aui-iconfont aui-icon-map"></i>
+                <div class="aui-grid-label">地图</div>
+            </div>
+            <div class="aui-col-xs-3">
+                <i class="aui-iconfont aui-icon-calendar"></i>
+                <div class="aui-grid-label">日历</div>
+            </div>
+            <div class="aui-col-xs-3">
+                <i class="aui-iconfont aui-icon-date"></i>
+                <div class="aui-grid-label">日期</div>
+            </div>
+            <div class="aui-col-xs-3">
+                <i class="aui-iconfont aui-icon-cart"></i>
+                <div class="aui-grid-label">购物车</div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<script type="text/javascript" src="{% static "aui/script/aui-tab.js" %}"></script>
+<script type="text/javascript" src="{% static "aui/script/aui-slide.js" %}"></script>
+<script type="text/javascript" src="{% static "aui/script/api.js" %}"></script>
+<script type="text/javascript">
+    (function () {
+        let searchBar = document.querySelector(".aui-searchbar-input");
+        if (searchBar) {
+            searchBar.onclick = function () {
+                document.querySelector(".aui-searchbar-cancel").style.marginRight = 0;
+            }
+        }
+        document.querySelector(".aui-searchbar-cancel").onclick = function () {
+            this.style.marginRight = "-" + this.offsetWidth + "px";
+            document.getElementById("search-input").value = '';
+            document.getElementById("search-input").blur();
+        };
+
+        function doSearch() {
+            let searchValue = document.getElementById("search-input").value;
+            if (searchValue) {
+                console.log("您输入的内容是:" + searchValue);
+            }
+        }
+
+        function search() {
+            let searchValue = document.getElementById("search-input").value;
+            console.log("您输入的内容2是:" + searchValue);
+        }
+
+        function currentFun(index) {
+            console.log(index);
+        }
+
+        let slide3 = new auiSlide({
+            container: document.getElementById("aui-slide3"),
+            {#"width":300,#}
+            {#"height": 240,#}
+            "speed": 1200,
+            "autoPlay": 3000, //自动播放
+            "loop": true,
+            "pageShow": true,
+            "pageStyle": 'dot',
+            'dotPosition': 'center',
+            currentPage: currentFun //当前页调用函数
+        });
+
+        console.log(slide3.pageCount());
+    })();
+
+</script>
 
 </body>
 </html>

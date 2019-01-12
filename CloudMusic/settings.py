@@ -24,7 +24,7 @@ SECRET_KEY = '$$$_cj-%5assympnl66jp@0^n+q@^n$+_z3^o++xz8c)ah2)6t'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*.toywang.cn']
+ALLOWED_HOSTS = ['music.toywang.cn', 'localhost', '127.0.0.1']
 
 # Application definition
 

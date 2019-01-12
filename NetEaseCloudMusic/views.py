@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+import time
+
 from django.http import JsonResponse
 from django.shortcuts import render
 
@@ -9,6 +11,11 @@ from NetEaseCloudMusic.api import NetEaseCloudMusicApi
 
 def index(request):
     return render(request, 'index.html')
+
+
+def home(request):
+    context = {'timestamp': time.time()}
+    return render(request, 'home.html', context)
 
 
 def login(request):
@@ -34,8 +41,14 @@ def mv_detail(request):
     if not mv_id:
         return JsonResponse({'code': -1, 'msg': 'params error', 'data': []})
 
-    ret = NetEaseCloudMusicApi.send_request('mv/detail', method='GET', data={'mvid': mv_id})
-    context = {'mv_detail': ret['data']}
+    ret_mv_detail = NetEaseCloudMusicApi.send_request('mv/detail', method='GET', data={'mvid': mv_id})
+    ret_mv_comment = NetEaseCloudMusicApi.send_request('comment/mv', method='GET', data={'id': mv_id})
+
+    context = {
+        'mv_detail': ret_mv_detail['data'],
+        'mv_comment': ret_mv_comment['hotComments'],
+    }
+
     return render(request, 'mv_detail.html', context)
 
 
