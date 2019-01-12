@@ -3,4 +3,4 @@
 
 
 # crontab
-*/10 * * * * cd /data/release/NeteaseCloudMusicApi/ && PORT=80 node app.js >> /data/logs/NeteaseCloudMusicApi/`date +'%Y-%m-%d'`.log 2>&1 &
+*/1 * * * * cd /data/NeteaseCloudMusicApi/ && PORT=8000 node app.js >> /data/NeteaseCloudMusicApi/logs/`date +'%Y-%m-%d'`.log 2>&1 &
