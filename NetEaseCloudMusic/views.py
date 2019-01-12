@@ -14,9 +14,12 @@ def index(request):
 
 
 def home(request):
-    ret_music_personalized = NetEaseCloudMusicApi.send_request('personalized', method='GET', data={'limit': 6})
+    ret_song_personalized = NetEaseCloudMusicApi.send_request('personalized', method='GET', data={'limit': 6})
+    ret_new_song_personalized = NetEaseCloudMusicApi.send_request('personalized/newsong', method='GET',
+                                                                  data={'limit': 1})
     context = {
-        'music_personalized': ret_music_personalized.get('result')
+        'song_personalized': ret_song_personalized.get('result'),
+        'new_song_personalized': ret_new_song_personalized.get('result'),
     }
     return render(request, 'home.html', context)
 

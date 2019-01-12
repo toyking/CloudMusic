@@ -25,15 +25,11 @@
 
     <div id="aui-slide3">
         <div class="aui-slide-wrap">
-            <div class="aui-slide-node bg-dark">
-                <img src="{% static "aui/image/l1.png" %}" alt=""/>
-            </div>
-            <div class="aui-slide-node bg-dark">
-                <img src="{% static "aui/image/l2.png" %}" alt=""/>
-            </div>
-            <div class="aui-slide-node bg-dark">
-                <img src="{% static "aui/image/l3.png" %}" alt=""/>
-            </div>
+            {% for song in new_song_personalized %}
+                <div class="aui-slide-node bg-dark">
+                    <img src="{{ song.song.album.picUrl }}" alt=""/>
+                </div>
+            {% endfor %}
         </div>
         <div class="aui-slide-page-wrap"><!--分页容器--></div>
     </div>
@@ -77,10 +73,10 @@
 
     <section class="aui-grid">
         <div class="aui-row">
-            {% for music in music_personalized %}
+            {% for song in song_personalized %}
                 <div class="aui-col-xs-4">
-                    <img src="{{ music.picUrl }}" style="padding: 0.5rem;" alt="">
-                    <div class="aui-grid-label">{{ music.name }}</div>
+                    <img src="{{ song.picUrl }}" style="padding: 0.5rem;" alt="">
+                    <div class="aui-grid-label">{{ song.name }}</div>
                 </div>
             {% endfor %}
         </div>
