@@ -74,7 +74,7 @@
     <section class="aui-grid">
         <div class="aui-row">
             {% for song in song_personalized %}
-                <div class="aui-col-xs-4" onclick="window.open('/song_detail?id={{ song.id }}','_self')">
+                <div class="aui-col-xs-4">
                     <img src="{{ song.picUrl }}" style="padding: 0.5rem;" alt="">
                     <div class="aui-grid-label">{{ song.name }}</div>
                 </div>
