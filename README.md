@@ -1,5 +1,5 @@
 # CloudMusic
-云音乐
+网易云音乐NodeJS版API：https://binaryify.github.io/NeteaseCloudMusicApi/#/?id=mv-%e8%af%84%e8%ae%ba
 
 
 # crontab
