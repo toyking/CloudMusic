@@ -8,6 +8,7 @@ urlpatterns = [
     url(r'^home', views.home),
     url(r'^login', views.login),
     url(r'^top_mv', views.top_mv),
+    url(r'^song_detail', views.song_detail),
     url(r'^mv_detail', views.mv_detail),
     url(r'^', views.index)
 ]

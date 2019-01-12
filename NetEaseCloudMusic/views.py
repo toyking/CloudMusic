@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-import time
-
 from django.http import JsonResponse
 from django.shortcuts import render
 
@@ -15,8 +13,7 @@ def index(request):
 
 def home(request):
     ret_song_personalized = NetEaseCloudMusicApi.send_request('personalized', method='GET', data={'limit': 6})
-    ret_new_song_personalized = NetEaseCloudMusicApi.send_request('personalized/newsong', method='GET',
-                                                                  data={'limit': 1})
+    ret_new_song_personalized = NetEaseCloudMusicApi.send_request('personalized/newsong', method='GET', data={})
     context = {
         'song_personalized': ret_song_personalized.get('result'),
         'new_song_personalized': ret_new_song_personalized.get('result'),
@@ -40,6 +37,24 @@ def top_mv(request):
     ret = NetEaseCloudMusicApi.send_request('top/mv', method='GET', data={'limit': limit})
     context = {'top_mv_list': ret['data']}
     return render(request, 'top_mv.html', context)
+
+
+def song_detail(request):
+    song_id = request.GET.get('id')
+    if not song_id:
+        return JsonResponse({'code': -1, 'msg': 'params error', 'data': []})
+
+    ret_song_detail = NetEaseCloudMusicApi.send_request('song/detail', method='GET', data={'ids': song_id})
+    ret_song_url = NetEaseCloudMusicApi.send_request('song/url', method='GET', data={'id': song_id})
+    ret_song_comment = NetEaseCloudMusicApi.send_request('comment/mv', method='GET', data={'id': song_id})
+
+    context = {
+        'song_detail': ret_song_detail.get('songs')[0],
+        'song_url': ret_song_url.get('data')[0],
+        'song_comment': ret_song_comment.get('hotComments'),
+    }
+
+    return render(request, 'song_detail.html', context)
 
 
 def mv_detail(request):

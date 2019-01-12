@@ -317,7 +317,7 @@
         } else {
            	return y > 0 ? 'down' : 'up';
         }
-	}
+	};
 	function extend (a, b) {
 		for (var key in b) {
 		  	if (b.hasOwnProperty(key)) {

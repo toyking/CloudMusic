@@ -26,7 +26,7 @@
     <div id="aui-slide3">
         <div class="aui-slide-wrap">
             {% for song in new_song_personalized %}
-                <div class="aui-slide-node bg-dark">
+                <div class="aui-slide-node bg-dark" onclick="window.open('/song_detail?id={{ song.id }}','_self')">
                     <img src="{{ song.song.album.picUrl }}" alt=""/>
                 </div>
             {% endfor %}
@@ -74,7 +74,7 @@
     <section class="aui-grid">
         <div class="aui-row">
             {% for song in song_personalized %}
-                <div class="aui-col-xs-4">
+                <div class="aui-col-xs-4" onclick="window.open('/song_detail?id={{ song.id }}','_self')">
                     <img src="{{ song.picUrl }}" style="padding: 0.5rem;" alt="">
                     <div class="aui-grid-label">{{ song.name }}</div>
                 </div>

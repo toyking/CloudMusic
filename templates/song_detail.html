@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>{{ song_detail.name }}</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static "aui/css/aui.css" %}"/>
+</head>
+<body>
+
+<header class="aui-bar aui-bar-nav">
+    <a href="/index" class="aui-pull-left aui-btn">
+        <span class="aui-iconfont aui-icon-left"></span>
+    </a>
+    <div class="aui-title">{{ song_detail.name }}</div>
+</header>
+
+
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=100% height=100
+        src="https://music.163.com/outchain/player?type=2&id={{ song_detail.id }}&auto=1&height=100">
+
+</iframe>
+
+<audio src="{{ song_url.url }}" controls autoplay>Your browser does not support the audio element.</audio>
+
+</body>
+</html>
