@@ -46,7 +46,7 @@ def song_detail(request):
 
     ret_song_detail = NetEaseCloudMusicApi.send_request('song/detail', method='GET', data={'ids': song_id})
     ret_song_url = NetEaseCloudMusicApi.send_request('song/url', method='GET', data={'id': song_id})
-    ret_song_comment = NetEaseCloudMusicApi.send_request('comment/mv', method='GET', data={'id': song_id})
+    ret_song_comment = NetEaseCloudMusicApi.send_request('comment/music', method='GET', data={'id': song_id})
 
     context = {
         'song_detail': ret_song_detail.get('songs')[0],
