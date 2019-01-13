@@ -1,0 +1,45 @@
+REQUEST URL: http://music.toywang.cn:8000/mv/detail?mvid=10842099
+METHOD: GET
+REQUEST: {
+	'mvid': '10842099'
+}
+RESPONSE: {
+	'code': 200,
+	'subed': False,
+	'loadingPicFS': '',
+	'bufferPicFS': '',
+	'data': {
+		'commentThreadId': 'R_MV_5_10842099',
+		'name': '\u6c99\u6f20\u9a86\u9a7c',
+		'publishTime': '2018-12-22',
+		'brs': {
+			'1080': 'http://vodkgeyttp8.vod.126.net/cloudmusic/62be/mv/e8b6/7c834294cfaa9f1953891bcd99322d61.mp4?wsSecret=2324fcddd29eb9aae77bfb17d9e77bc4&wsTime=1547353947',
+			'240': 'http://vodkgeyttp8.vod.126.net/cloudmusic/62be/mv/e8b6/4049ca0039368cb67594f3f27479dd19.mp4?wsSecret=15b9a42f9e1fbfc2a3d9f24b83dc0da6&wsTime=1547353947',
+			'720': 'http://vodkgeyttp8.vod.126.net/cloudmusic/62be/mv/e8b6/e85adcf7f68641099a981c6a5f7f3409.mp4?wsSecret=5c420f05006d7741a617fef34b805932&wsTime=1547353947',
+			'480': 'http://vodkgeyttp8.vod.126.net/cloudmusic/62be/mv/e8b6/16b971354729a5dc864c1dc3e3e70f9e.mp4?wsSecret=063bf831d1d7cc668b69ebd75ae021bb&wsTime=1547353947'
+		},
+		'briefDesc': '',
+		'nType': 0,
+		'cover': 'http://p1.music.126.net/kw0dT3FWHKGL75HObSt59g==/109951163738936452.jpg',
+		'artistId': 12475735,
+		'likeCount': 3293,
+		'commentCount': 636,
+		'artistName': '\u5c55\u5c55\u4e0e\u7f57\u7f57',
+		'shareCount': 859,
+		'coverId': 109951163738936450L,
+		'isReward': False,
+		'artists': [{
+				'id': 12475735,
+				'name': '\u5c55\u5c55\u4e0e\u7f57\u7f57'
+			}
+		],
+		'duration': 338000,
+		'playCount': 1045884,
+		'subCount': 9763,
+		'id': 10842099,
+		'desc': '\u300a\u6c99\u6f20\u9a86\u9a7c\u300b\u662f\u4e00\u9996\u7531\u591a\u79cd\u97f3\u4e50\u98ce\u683c\u7ed3\u5408\u7684\u6b4c\u66f2\uff0c\u6b4c\u66f2\u524d\u594f\u6d53\u6d53\u7684\u897f\u57df\u98ce\u683c\u642d\u914d\u4e0a\u6447\u6eda\u97f3\u4e50\u548c\u6d41\u884c\u5531\u6cd5\u3002\u6574\u9996\u6b4c\u66f2\u8282\u594f\u660e\u6717\u53c8\u9ad8\u4ea2\uff0c\u6b4c\u58f0\u65e2\u575a\u5b9a\u53c8\u6d12\u8131\u3002\n\u201c\u4eba\u751f\u5982\u6c99\u6f20\uff0c\u4f60\u6211\u7686\u9a86\u9a7c\u201d\uff0c\u5c55\u5c55\u4e0e\u7f57\u7f57\u4e5f\u59cb\u7ec8\u575a\u6301\u7740\u5982\u9a86\u9a7c\u822c\u201c\u4f46\u884c\u52aa\u529b\uff0c\u4e0d\u95ee\u897f\u4e1c\u201d\u7684\u63a2\u5bfb\u7cbe\u795e\u4e00\u8def\u524d\u884c\u3002'
+	},
+	'loadingPic': '',
+	'bufferPic': ''
+}
+TIME_COST: 0.024 seconds
